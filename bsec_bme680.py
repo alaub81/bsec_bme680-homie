@@ -1,14 +1,11 @@
 #!/usr/bin/python3
 import subprocess
-import paho.mqtt.publish as publish
 import json
 from statistics import median
 
 #Open C File
 proc = subprocess.Popen(['./bsec_bme680'], stdout=subprocess.PIPE)
 
-# 2021-01-31 16:56:59,[IAQ (0)]: 247.37,[T degC]: 21.95,[H %rH]: 42.05,[P hPa]: 989.68,[G Ohms]: 3591,[S]: 0,[eCO2 ppm]: 1370.145141601562500,[bVOCe ppm]: 2.7185881137847900390625000
-# {"IAQ_Accuracy": "0","IAQ":"247.46","Temperature": "21.45","Humidity": "51.95","Pressure": "991.93","Gas": "35788","Status": "0","Static_IAQ": "137.06","eCO2": "1370.616333007812500","bVOCe": "2.7205247879028320312500000"}
 listIAQ_Accuracy = []
 listPressure = []
 listGas = []
@@ -21,7 +18,6 @@ listeCO2 = []
 listbVOCe = []
 
 for line in iter(proc.stdout.readline, ''):
-#    print(line.decode("utf-8"))
     lineJSON = json.loads(line.decode("utf-8")) # process line-by-line
     lineDict = dict(lineJSON)
 
@@ -64,9 +60,6 @@ for line in iter(proc.stdout.readline, ''):
         #Temperature Offset
         #Temperature = Temperature + 2
 
-        #payload = {"IAQ_Accuracy": IAQ_Accuracy,"IAQ": round(IAQ, 1),"Temperature": round(Temperature, 1),"Humidity": round(Humidity, 1),"Pressure": round(Pressure, 1),"Gas": Gas,"Status": Status}
-        #publish.single("bme680_wohnzimmer", json.dumps(payload), hostname="localhost")
-        #print(payload)
         print("Temperature: ",Temperature)
         print("Humidity: ",Humidity)
         print("Pressure: ",Pressure)
