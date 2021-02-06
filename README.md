@@ -93,6 +93,7 @@ medianvalues = 10
 # Retry to connect to mqtt broker
 mqttretry = 5
 ```
+## Systemd Service
 after that you can copy the systemd service file, edit it if you have to change something, like perhaps the script's working path and just bring the app to life:
 ```bash
 cp bsec_bme680-homie.service /etc/systemd/system/
