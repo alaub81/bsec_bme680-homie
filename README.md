@@ -70,6 +70,7 @@ bsec_iaq.state empty
 {"IAQ_Accuracy": "0","IAQ":"25.00","Temperature": "19.01","Humidity": "54.96","Pressure": "988.73","Gas": "14918","Status": "0","Static_IAQ": "25.00","eCO2": "500.000000000000000","bVOCe": "0.4999999403953552246093750"}
 {"IAQ_Accuracy": "0","IAQ":"25.00","Temperature": "18.95","Humidity": "55.09","Pressure": "988.73","Gas": "17290","Status": "0","Static_IAQ": "25.00","eCO2": "500.000000000000000","bVOCe": "0.4999999403953552246093750"}
 {"IAQ_Accuracy": "0","IAQ":"25.00","Temperature": "19.00","Humidity": "54.78","Pressure": "988.69","Gas": "19586","Status": "0","Static_IAQ": "25.00","eCO2": "500.000000000000000","bVOCe": "0.4999999403953552246093750"}
+```
 
 # Configuration
 so now we can configure our Python Script. Just edit at the top the variables, to connect to the MQTT Broker:
