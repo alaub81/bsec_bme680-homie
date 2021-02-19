@@ -20,8 +20,6 @@ retain_message = True
 mqttretry = 5
 # how many values should be collected before publishing the median
 medianvalues = 10
-# Retry to connect to mqtt broker
-mqttretry = 5
 
 # do the stuff
 ### Functions
