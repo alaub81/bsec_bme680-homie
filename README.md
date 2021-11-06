@@ -17,13 +17,13 @@ cd bsec_bme680-homie
 now you need to download the [BSEC Library](https://www.bosch-sensortec.com/software-tools/software/bsec/) to `./src`. You have to register for the download. Then unzip it:
 ```bash
 cd src
-unzip bsec_1-4-8-0_generic_release.zip
+unzip bsec_1-4-8-0_generic_release_updated_v3.zip
 ```
 ## compiling the C application
 now we have everything we need on our system and can configure the C application, so we can compile it. First of all we should configure the `make.config`:
 ```c
 # Use right Version of downloaded bsec Library
-BSEC_DIR='./src/BSEC_1.4.8.0_Generic_Release'
+BSEC_DIR='./src/BSEC_1.4.8.0_Generic_Release_updated_v3'
 
 # which Version
 VERSION='normal_version'
