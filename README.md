@@ -1,5 +1,7 @@
 # bsec_bme680-homie
-Here you can find a complete small application, which uses the [Bosch Sensortec Environmental Cluster](https://www.bosch-sensortec.com/software-tools/software/bsec/) (BSEC) to read out the data from the BME680 Sensor and publish it to a MQTT Broker. The MQTT publishing is homie MQTT conventional, so you could use it as an IOT Device for your SmartHome. All you need is to download the [BSEC Library](https://www.bosch-sensortec.com/software-tools/software/bsec/) from the Bosch homepage, and this git repository. 
+Here you can find a complete small application, which uses the [Bosch Sensortec Environmental Cluster](https://www.bosch-sensortec.com/software-tools/software/bsec/) (BSEC) to read out the data from the BME680 Sensor and publish it to a MQTT Broker. The MQTT publishing is homie MQTT conventional, so you could use it as an IoT Device for your SmartHome. All you need is to download the [BSEC Library](https://www.bosch-sensortec.com/software-tools/software/bsec/) from the Bosch homepage, and this git repository. 
+
+Optional, you could also connect a RGB LED to your Raspberry and then it will show up GREEN if everything is fine, RED when CO2 Level is to high, or BLUE, when humidity is to high.
 
 I reused the stuff of the following git repositories, to make that thing here working:
 * https://github.com/alexh-name/bsec_bme680_linux
@@ -76,6 +78,7 @@ bsec_iaq.state empty
 so now we can configure our Python Script. Just edit at the top the variables, to connect to the MQTT Broker:
 ```python3
 # set the variables
+# MQTT Broker Connection
 broker = "FQDN / IP ADDRESS"
 port = 8883
 mqttclientid = "clientid-bsecbme680-homie"
@@ -91,8 +94,17 @@ retain_message = True
 mqttretry = 5
 # how many values should be collected before publishing the median
 medianvalues = 10
-# Retry to connect to mqtt broker
-mqttretry = 5
+# True/False led warning (only True if you have an RGB Led connected) 
+ledwarning = False
+# set red,green and blue pins
+redPin = 22
+greenPin = 27
+bluePin = 17
+# At which value CO2 alarm will be fired (x in ppm)
+eco2alarm = 1000
+# At which value humidity alarm will be fired (x in %)
+humidityalarm = 70
+
 ```
 ## Systemd Service
 after that you can copy the systemd service file, edit it if you have to change something, like perhaps the script's working path and just bring the app to life:
@@ -118,6 +130,9 @@ The Sensor, or better the BSEC library have the following outputs:
 * bVOCe (ppm)
 * Sensor State - Return value of the BSEC library
 All this data will be published to the MQTT Broker and you could use it wherever you want.
+Additional there are two alarms, based on warning levels in the variables area, as MQTT output:
+* CO2 Alarm (true / false)
+* Humidity Alarm (true / false)
 
 # More Informations
 Here you can find more informations about that little project. Goal was to get a nice little device for checking the room environment.
