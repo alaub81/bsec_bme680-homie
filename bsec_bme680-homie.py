@@ -23,6 +23,8 @@ mqttretry = 5
 medianvalues = 10
 # True/False led warning (only True if you have an RGB Led connected) 
 ledwarning = False
+# green LED on if everything is fine
+ledok = False
 # set red,green and blue pins
 redPin = 22
 greenPin = 27
@@ -226,8 +228,10 @@ try:
       if median(listeCO2) <= eco2alarm and median(listHumidity) <= humidityalarm:
         publish(nodes + "/eco2alarm","false") 
         publish(nodes + "/humidityalarm","false") 
-        if ledwarning == True:
+        if ledwarning == True and ledok == True:
           greenled()
+        if ledwarning == True and ledok == False:
+          turnOffled()
       # homie state ready
       publish("$state","ready")
 
