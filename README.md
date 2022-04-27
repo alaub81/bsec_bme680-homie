@@ -9,6 +9,11 @@ I reused the stuff of the following git repositories, to make that thing here wo
 
 Big thanks to these two guys!
 
+# Requirements
+* BME680 Sensor
+* Raspberry Pi
+* MQTT Broker with enabled TLS
+
 # Installation
 so for installation just clone that repository, for example to `/opt`
 ```bash
