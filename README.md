@@ -148,3 +148,6 @@ Sorry ... it's german ...
 `bsec_bme680` just quits without a message
 
 Your `bsec_iaq.state file might be corrupt or incompatible after an update of the BSEC library. Try (re)moving it.
+
+# HomeAssisten Homie Integration
+If you like to use homie MQTT Support within HomeAssistent, just have a look here: https://github.com/elbowz/ha-homie
